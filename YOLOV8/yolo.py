@@ -7,9 +7,7 @@ import cv2
 import numpy as np
 from ultralytics import YOLO
 
-# =======================
 # SIMPLE KALMAN TRACKER
-# =======================
 class SimpleKalmanTracker:
     """Simple Kalman filter for tracking a single object"""
     
@@ -78,29 +76,28 @@ class SimpleKalmanTracker:
 # MAIN PROGRAM
 # =======================
 def main():
-    # =============== CONFIGURATION ===============
+    # =============== CONFIGURATION 
     VIDEO_PATH = "../VIDEOS/realvideo.mp4"  # Your video file (or 0 for webcam)
     YOLO_MODEL = "yolov8n.pt"     # YOLO model (n=fastest, x=most accurate)
     CONFIDENCE = 0.5              # Detection confidence (0.0 to 1.0)
     TRACK_CLASS = 0               # What to track: 0=person, 2=car, etc.
-    # ============================================
     
-    print("🚀 Starting YOLO + Kalman Tracker...")
-    print(f"📹 Video: {VIDEO_PATH}")
-    print(f"🎯 Tracking class: {TRACK_CLASS}")
-    print(f"⚙️  Confidence threshold: {CONFIDENCE}")
+    print(" Starting YOLO + Kalman Tracker...")
+    print(f" Video: {VIDEO_PATH}")
+    print(f" Tracking class: {TRACK_CLASS}")
+    print(f"  Confidence threshold: {CONFIDENCE}")
     
     # Load YOLO model
-    print("\n📦 Loading YOLO model...")
+    print("\n Loading YOLO model...")
     model = YOLO(YOLO_MODEL)
-    print("✅ Model loaded!")
+    print(" Model loaded!")
     
     # Open video
     cap = cv2.VideoCapture(VIDEO_PATH)
     
     if not cap.isOpened():
-        print(f"❌ Error: Could not open video '{VIDEO_PATH}'")
-        print("💡 Make sure the video file exists or use 0 for webcam")
+        print(f" Error: Could not open video '{VIDEO_PATH}'")
+        print(" Make sure the video file exists or use 0 for webcam")
         return
     
     # Get video info
@@ -108,10 +105,10 @@ def main():
     width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
     height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
     
-    print(f"\n📊 Video Info:")
+    print(f"\n Video Info:")
     print(f"   Resolution: {width}x{height}")
     print(f"   FPS: {fps}")
-    print("\n▶️  Press 'q' or ESC to quit\n")
+    print("\n Press 'q' or ESC to quit\n")
     
     # Tracking variables
     tracker = None  # Kalman tracker (created when object detected)
@@ -130,7 +127,7 @@ def main():
         
         frame_number += 1
         
-        # ===== DETECTION PHASE =====
+        # ===== DETECTION PHASE 
         if not tracking:
             # Not tracking yet - look for object
             results = model(frame, conf=CONFIDENCE, verbose=False)
@@ -155,7 +152,7 @@ def main():
                         tracker = SimpleKalmanTracker(x, y, w, h)
                         tracking = True
                         lost_frames = 0
-                        print(f"✅ Object detected at frame {frame_number} - Starting tracking!")
+                        print(f" Object detected at frame {frame_number} - Starting tracking!")
                         break
                 
                 if tracking:
@@ -237,7 +234,7 @@ def main():
                 if lost_frames > MAX_LOST:
                     tracking = False
                     tracker = None
-                    print(f"❌ Lost track at frame {frame_number}")
+                    print(f" Lost track at frame {frame_number}")
         
         # ===== DISPLAY INFO =====
         status = "TRACKING" if tracking else "SEARCHING"
@@ -256,14 +253,14 @@ def main():
         # Check for quit (q or ESC)
         key = cv2.waitKey(1) & 0xFF
         if key == ord('q') or key == 27:
-            print("\n⏹️  Stopped by user")
+            print("\n Stopped by user")
             break
     
     # Cleanup
     cap.release()
     cv2.destroyAllWindows()
-    print(f"\n✅ Processed {frame_number} frames")
-    print("👋 Done!")
+    print(f"\n Processed {frame_number} frames")
+    print(" Done!")
 
 
 if __name__ == "__main__":
