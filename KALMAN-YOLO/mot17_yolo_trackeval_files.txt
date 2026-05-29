@@ -1,0 +1,22 @@
+# MOT17 YOLO + TrackEval tracking files and folders
+
+MOT17YOLO.py/yolomot.py
+MOT17YOLO.py/yoloeval.py
+MOT17YOLO.py/yolov8x.pt
+MOT17YOLO.py/yolokfoutputs/
+MOT17YOLO.py/yolokfoutputs/track_results/
+MOT17YOLO.py/yolokfoutputs/video_frames/
+MOT17YOLO.py/yolokfoutputs/yolo_kf_tracking_all_sequences.mp4 (generated output)
+MOT17YOLO.py/MOT17/  # MOT17 dataset folder (images + gt)
+
+MOT17YOLO.py/TrackEval/scripts/run_mot_challenge.py
+MOT17YOLO.py/TrackEval/data/gt/mot_challenge/MOT17-train/
+MOT17YOLO.py/TrackEval/data/trackers/mot_challenge/MOT17-train/YOLO_KF/
+MOT17YOLO.py/TrackEval/data/trackers/mot_challenge/MOT17-train/YOLO_KF/pedestrian_summary.txt
+MOT17YOLO.py/TrackEval/data/trackers/mot_challenge/MOT17-train/YOLO_KF/data/  # tracker result files copied here
+
+MOT17YOLO.py/TrackEval/trackeval/  # core TrackEval package
+MOT17YOLO.py/TrackEval/trackeval/datasets/mot_challenge.py
+MOT17YOLO.py/TrackEval/trackeval/datasets/mot_challenge_2d_box.py
+MOT17YOLO.py/TrackEval/trackeval/datasets/_base_dataset.py
+MOT17YOLO.py/TrackEval/trackeval/__init__.py

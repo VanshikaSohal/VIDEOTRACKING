@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Repo-specific GitIgnore ----------------------------------------------------------------------------------------------
 *.jpg
 *.jpeg
@@ -292,3 +293,44 @@ current_project_structure.txt
 file_audit_for_cleanup.txt
 project_structure_summary.txt
 structure.txt
+=======
+# Weights
+pretrained/
+*.pt
+*.pth
+*.pkl
+*.ckpt
+
+# Datasets
+datasets/MOT17/test/
+datasets/MOT17/train/*/img1/
+datasets/MOT17/train/*/det_framewise/
+datasets/**/*.jpg
+datasets/**/*.png
+
+# Outputs
+outputs/
+
+# Cache
+__pycache__/
+*.pyc
+*.pyo
+.ipynb_checkpoints/
+
+# IDE & OS
+.idea/
+.DS_Store
+desktop.ini
+
+# External nested repos
+experiments/external/
+
+# TrackEval nested git
+TrackEval/.git
+# Test images in external
+external/fastreid/tools/deploy/test_data/
+
+# Logs and TensorBoard
+experiments/**/*.log
+experiments/**/events.out.tfevents.*
+>>>>>>> df7f24af737ac1c11648907c9c4b380c8e9b98ed
