@@ -261,3 +261,34 @@ com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
 fabric.properties
+
+# ===== DIFFMOT =====
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+.env
+
+# ===== KALMANYOLO =====
+# Large model weights
+MOT17YOLO.py/yolov8n.pt
+MOT17YOLO.py/yolov8x.pt
+
+# MOT17 dataset (bahut bada hoga)
+MOT17YOLO.py/MOT17/
+
+# Outputs
+MOT17YOLO.py/yolokfoutputs/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Audit/temp files
+current_project_structure.txt
+file_audit_for_cleanup.txt
+project_structure_summary.txt
+structure.txt

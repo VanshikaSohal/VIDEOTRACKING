@@ -1,0 +1,45 @@
+# ----------------------------
+# Base Libraries (required)
+# ----------------------------
+matplotlib>=3.2.2         # For plotting results (Python 3.7+)
+numpy>=1.18.5,<1.24.0     # Core numerical library (Python 3.7-3.11)
+opencv-python>=4.1.1      # For image/video I/O and preprocessing
+Pillow>=7.1.2             # Image processing
+PyYAML>=5.3.1             # YAML config parsing (used in YOLO)
+requests>=2.23.0          # HTTP requests (for downloading weights)
+scipy>=1.4.1              # Scientific computing
+torch>=1.7.0,!=1.12.0     # PyTorch, core DL framework (Python 3.7-3.11)
+torchvision>=0.8.1,!=0.13.0  # For vision models and transforms
+tqdm>=4.41.0              # Progress bars for loops
+protobuf<4.21.3           # For saving/loading models (compatible with PyTorch 1.x)
+
+# ----------------------------
+# Logging / Visualization
+# ----------------------------
+tensorboard>=2.4.1        # Visualize training metrics
+# wandb                   # Optional: Weights & Biases for cloud logging
+
+# ----------------------------
+# Data Analysis / Plotting
+# ----------------------------
+pandas>=1.1.4             # Data manipulation (Python 3.7-3.11)
+seaborn>=0.11.0           # Statistical plotting
+
+
+# Export / Deployment (Optional)
+# coremltools>=4.1        # Export to Apple CoreML
+# onnx>=1.9.0             # Export to ONNX
+# onnx-simplifier>=0.3.6  # Simplify ONNX models
+# scikit-learn==0.19.2    # Used for CoreML quantization (if needed)
+# tensorflow>=2.4.1       # Export to TFLite
+# tensorflowjs>=3.9.0     # Export to TensorFlow.js
+# openvino-dev            # Export for OpenVINO
+
+
+# Extras / Utilities
+ipython                    # Interactive Python shell (not mandatory)
+psutil                     # System resource utilization
+thop                       # FLOPs computation for models
+# albumentations>=1.0.3    # Optional: Image augmentations
+# pycocotools>=2.0          # Optional: COCO dataset metrics (mAP)
+# roboflow                  # Optional: Dataset management
