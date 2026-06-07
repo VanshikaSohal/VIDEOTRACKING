@@ -32,6 +32,11 @@ The tracking speed (including detection and tracking speed) is test on an RTX 30
 ### Video demos
 <img src="assets/DiffMOT_DanceTrack.gif" width="400"/>   <img src="assets/DiffMOT_SportsMOT.gif" width="400"/>
 
+**Media file paths:**
+- Framework diagram: `assets/diffmot_git.png`
+- Alternate diagram: `assets/ddmp_git.png`
+- Demo GIFs: `assets/DiffMOT_DanceTrack.gif`, `assets/DiffMOT_SportsMOT.gif`
+
 ## I. Installation.
 * install torch
 ~~~

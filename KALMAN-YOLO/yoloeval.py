@@ -45,7 +45,7 @@ for path in glob.glob(os.path.join(TRACKEVAL_DIR,"**","*.py"), recursive=True):
         f.write(code)
 
 # Run eval
-script = os.path.join(TRACKEVAL_DIR,"scripts","run_mot_challenge.py")
+script = r"C:\Users\vansh\VIDEOTRACKING\KALMAN-YOLO\TrackEval\scripts\run_mot_challenge.py"
 subprocess.run([sys.executable, script,
     "--BENCHMARK","MOT17",
     "--SPLIT_TO_EVAL","train",

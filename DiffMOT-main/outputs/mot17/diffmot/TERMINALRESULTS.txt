@@ -1,0 +1,103 @@
+Evaluating diffmot
+
+    MotChallenge2DBox.get_raw_seq_data(diffmot, MOT17-02-FRCNN)            0.1841 sec
+    MotChallenge2DBox.get_preprocessed_seq_data(pedestrian)                0.1104 sec
+    HOTA.eval_sequence()                                                   0.1590 sec
+    CLEAR.eval_sequence()                                                  0.0248 sec
+    Identity.eval_sequence()                                               0.0077 sec
+    Count.eval_sequence()                                                  0.0000 sec
+1 eval_sequence(MOT17-02-FRCNN, diffmot)                                 0.4912 sec
+    MotChallenge2DBox.get_raw_seq_data(diffmot, MOT17-04-FRCNN)            0.6682 sec
+    MotChallenge2DBox.get_preprocessed_seq_data(pedestrian)                0.2129 sec
+    HOTA.eval_sequence()                                                   0.2684 sec
+    CLEAR.eval_sequence()                                                  0.0440 sec
+    Identity.eval_sequence()                                               0.0216 sec
+    Count.eval_sequence()                                                  0.0000 sec
+2 eval_sequence(MOT17-04-FRCNN, diffmot)                                 1.2294 sec
+    MotChallenge2DBox.get_raw_seq_data(diffmot, MOT17-05-FRCNN)            0.1004 sec
+    MotChallenge2DBox.get_preprocessed_seq_data(pedestrian)                0.1481 sec
+    HOTA.eval_sequence()                                                   0.4668 sec
+    CLEAR.eval_sequence()                                                  0.1452 sec
+    Identity.eval_sequence()                                               0.0297 sec
+    Count.eval_sequence()                                                  0.0000 sec
+3 eval_sequence(MOT17-05-FRCNN, diffmot)                                 0.8956 sec
+    MotChallenge2DBox.get_raw_seq_data(diffmot, MOT17-09-FRCNN)            0.2143 sec
+    MotChallenge2DBox.get_preprocessed_seq_data(pedestrian)                0.3369 sec
+    HOTA.eval_sequence()                                                   0.4735 sec
+    CLEAR.eval_sequence()                                                  0.0399 sec
+    Identity.eval_sequence()                                               0.0105 sec
+    Count.eval_sequence()                                                  0.0000 sec
+4 eval_sequence(MOT17-09-FRCNN, diffmot)                                 1.0801 sec
+    MotChallenge2DBox.get_raw_seq_data(diffmot, MOT17-10-FRCNN)            0.2464 sec
+    MotChallenge2DBox.get_preprocessed_seq_data(pedestrian)                0.6008 sec
+    HOTA.eval_sequence()                                                   0.5472 sec
+    CLEAR.eval_sequence()                                                  0.0695 sec
+    Identity.eval_sequence()                                               0.0209 sec
+    Count.eval_sequence()                                                  0.0000 sec
+5 eval_sequence(MOT17-10-FRCNN, diffmot)                                 1.4928 sec
+    MotChallenge2DBox.get_raw_seq_data(diffmot, MOT17-11-FRCNN)            0.2710 sec
+    MotChallenge2DBox.get_preprocessed_seq_data(pedestrian)                0.3700 sec
+    HOTA.eval_sequence()                                                   0.4897 sec
+    CLEAR.eval_sequence()                                                  0.0676 sec
+    Identity.eval_sequence()                                               0.0195 sec
+    Count.eval_sequence()                                                  0.0000 sec
+6 eval_sequence(MOT17-11-FRCNN, diffmot)                                 1.2247 sec
+    MotChallenge2DBox.get_raw_seq_data(diffmot, MOT17-13-FRCNN)            0.2227 sec
+    MotChallenge2DBox.get_preprocessed_seq_data(pedestrian)                0.3125 sec
+    HOTA.eval_sequence()                                                   0.4034 sec
+    CLEAR.eval_sequence()                                                  0.0583 sec
+    Identity.eval_sequence()                                               0.0242 sec
+    Count.eval_sequence()                                                  0.0000 sec
+7 eval_sequence(MOT17-13-FRCNN, diffmot)                                 1.0281 sec
+
+All sequences for diffmot finished in 7.45 seconds
+
+HOTA: diffmot-pedestrian           HOTA      DetA      AssA      DetRe     DetPr     AssRe     AssPr     LocA      OWTA      HOTA(0)   LocA(0)   HOTALocA(0)
+MOT17-02-FRCNN                     26.624    26.783    26.949    28.262    75.975    34.872    53.69     83.703    27.433    31.893    78.523    25.044
+MOT17-04-FRCNN                     30.486    41.438    22.751    44.292    78.665    25.646    61.043    84.134    31.63     37.672    78.239    29.474
+MOT17-05-FRCNN                     28.846    38.498    22.141    45.57     59.596    37.224    38.157    76.348    31.598    43.232    64.514    27.89
+MOT17-09-FRCNN                     43.706    54.004    35.673    59.794    75.703    43.661    60.3      82.768    46.139    57.89     76.004    43.998
+MOT17-10-FRCNN                     36.67     42.394    32.009    46.401    70.144    38.538    59.448    78.725    38.491    51.079    71.458    36.5
+MOT17-11-FRCNN                     48.455    50.006    47.297    58.835    70.903    57.361    68.043    84.525    52.704    60.911    77.671    47.31
+MOT17-13-FRCNN                     32.321    32.995    32.113    35.411    71.485    40.748    53.728    79.952    33.599    42.753    73.718    31.517
+COMBINED                           33.615    39.435    29.071    42.996    73.97     35.409    59.318    82.462    35.232    43.075    75.715    32.614
+
+CLEAR: diffmot-pedestrian          MOTA      MOTP      MODA      CLR_Re    CLR_Pr    MTR       PTR       MLR       sMOTA     CLR_TP    CLR_FN    CLR_FP    IDSW      MT        PT        ML        Frag
+MOT17-02-FRCNN                     28.486    81.258    29.6      33.4      89.786    11.29     35.484    53.226    22.226    6206      12375     706       207       7         22        33        331
+MOT17-04-FRCNN                     44.036    82.546    45.358    50.832    90.279    16.867    51.807    31.325    35.163    24174     23383     2603      629       14        43        26        945
+MOT17-05-FRCNN                     24.996    74.7      28.09     52.277    68.368    20.301    62.406    17.293    11.77     3616      3301      1673      214       27        83        23        304
+MOT17-09-FRCNN                     62.141    81.505    63.512    71.249    90.204    46.154    50        3.8462    48.963    3794      1531      412       73        12        13        1         109
+MOT17-10-FRCNN                     46.826    75.832    49.061    57.606    87.083    22.807    56.14     21.053    32.904    7396      5443      1097      287       13        32        12        618
+MOT17-11-FRCNN                     46.503    84.182    46.905    64.943    78.263    32        29.333    38.667    36.23     6128      3308      1702      38        24        22        29        76
+MOT17-13-FRCNN                     36.566    76.878    39.521    44.528    89.891    20        40        40        26.27     5184      6458      583       344       22        44        44        466
+COMBINED                           40.9      80.611    42.496    50.311    86.555    21.795    47.436    30.769    31.146    56498     55799     8776      1792      119       259       168       2849
+
+Identity: diffmot-pedestrian       IDF1      IDR       IDP       IDTP      IDFN      IDFP
+MOT17-02-FRCNN                     29.828    20.462    55.006    3802      14779     3110
+MOT17-04-FRCNN                     33.476    26.162    46.465    12442     35115     14335
+MOT17-05-FRCNN                     34.327    30.288    39.611    2095      4822      3194
+MOT17-09-FRCNN                     50.509    45.202    57.228    2407      2918      1799
+MOT17-10-FRCNN                     46.09     38.29     57.883    4916      7923      3577
+MOT17-11-FRCNN                     52.925    48.421    58.352    4569      4867      3261
+MOT17-13-FRCNN                     37.624    28.131    56.789    3275      8367      2492
+COMBINED                           37.738    29.837    51.331    33506     78791     31768
+
+Count: diffmot-pedestrian          Dets      GT_Dets   IDs       GT_IDs
+MOT17-02-FRCNN                     6912      18581     107       62
+MOT17-04-FRCNN                     26777     47557     250       83
+MOT17-05-FRCNN                     5289      6917      140       133
+MOT17-09-FRCNN                     4206      5325      64        26
+MOT17-10-FRCNN                     8493      12839     223       57
+MOT17-11-FRCNN                     7830      9436      104       75
+MOT17-13-FRCNN                     5767      11642     202       110
+COMBINED                           65274     112297    1090      546
+
+Timing analysis:
+MotChallenge2DBox.get_raw_seq_data                                     1.9071 sec
+MotChallenge2DBox.get_preprocessed_seq_data                            2.0915 sec
+HOTA.eval_sequence                                                     2.8080 sec
+CLEAR.eval_sequence                                                    0.4493 sec
+Identity.eval_sequence                                                 0.1341 sec
+Count.eval_sequence                                                    0.0000 sec
+eval_sequence                                                          7.4418 sec
+Evaluator.evaluate                                                     8.8907 sec

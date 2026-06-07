@@ -1,50 +1,84 @@
-# PYTHON
-__pycache__/
-*.py[cod]
-*.pyc
-*.pyo
-*.pyd
-*.egg-info/
-dist/
-build/
-.env
-.venv*/
-venv*/
-ENV*/
-
-# MODEL WEIGHTS 
+# Weights
+pretrained/
 *.pt
 *.pth
 *.pkl
 *.ckpt
-*.weights
-*.pb
-*.onnx
-*.engine
-*.tflite
-*.h5
 
-#  DATASETS 
-KALMAN-YOLO/MOT17/
-DiffMOT-main/datasets/
+# Datasets
+datasets/MOT17/test/
+datasets/MOT17/train/*/img1/
+datasets/MOT17/train/*/det_framewise/
+datasets/**/*.jpg
+datasets/**/*.png
 
-# OUTPUTS 
-KALMAN-YOLO/yolokfoutputs/
-outputs/
-runs/
+# DiffMOT-main nested datasets
+DiffMOT-main/pretrained/
+DiffMOT-main/*.pt
+DiffMOT-main/*.pth
+DiffMOT-main/*.pkl
+DiffMOT-main/*.ckpt
+DiffMOT-main/datasets/MOT17/test/
+DiffMOT-main/datasets/MOT17/train/*/img1/
+DiffMOT-main/datasets/MOT17/train/*/det_framewise/
+DiffMOT-main/datasets/**/*.jpg
+DiffMOT-main/datasets/**/*.png
 
-# JUPYTER 
+# DiffMOT-main nested externals
+DiffMOT-main/experiments/external/
+DiffMOT-main/TrackEval/.git
+DiffMOT-main/external/fastreid/tools/deploy/test_data/
+
+# DiffMOT-main logs
+DiffMOT-main/experiments/**/*.log
+DiffMOT-main/experiments/**/events.out.tfevents.*
+
+# Cache
+__pycache__/
+*.pyc
+*.pyo
 .ipynb_checkpoints/
 
-#  IDE & OS
+# IDE & OS
 .idea/
-.vscode/
 .DS_Store
 desktop.ini
 
-# TEMP/AUDIT FILES 
-current_project_structure.txt
-file_audit_for_cleanup.txt
-project_structure_summary.txt
-structure.txt
-PROJECT_STRUCTURE.md
+# External nested repos
+experiments/external/
+
+# TrackEval nested git
+TrackEval/.git
+# Test images in external
+external/fastreid/tools/deploy/test_data/
+
+# Logs and TensorBoard
+experiments/**/*.log
+experiments/**/events.out.tfevents.*
+RESULTS_SUMMARY.md
+PROJECT_TREE.md
+TRACKING_RESULTS_LOCATIONS.md
+PROJECT_SUMMARY.md
+# Cloned repos — not our code
+BOTSORT-FASTREID/BoT-SORT/
+KALMAN-YOLO/TrackEval/trackeval/
+KALMAN-YOLO/TrackEval/docs/
+KALMAN-YOLO/TrackEval/tests/
+KALMAN-YOLO/TrackEval/scripts/
+BOTSORT-FASTREID/TrackEval/trackeval/
+BOTSORT-FASTREID/TrackEval/docs/
+BOTSORT-FASTREID/TrackEval/tests/
+BOTSORT-FASTREID/TrackEval/scripts/
+DiffMOT-main/TrackEval/trackeval/
+DiffMOT-main/TrackEval/docs/
+DiffMOT-main/TrackEval/tests/
+DiffMOT-main/TrackEval/scripts/
+
+# KALMAN-YOLO dataset
+KALMAN-YOLO/MOT17/
+
+# BoT-SORT cloned repo
+BOTSORT-FASTREID/BoT-SORT/
+
+# SWIN legacy
+SWIN-TRANSFORMER/

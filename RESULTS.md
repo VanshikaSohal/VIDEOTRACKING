@@ -12,64 +12,57 @@ This file collects available evaluation outputs (HOTA, MOTA, IDF1, etc.) for bot
 - Evaluation outputs (TrackEval): expected under `TrackEval` when `yoloeval.py` is run — TrackEval copies files into `TrackEval/data/trackers/mot_challenge/<TRACKER_NAME>/` and writes summary files (e.g. `pedestrian_summary.txt`) into `TrackEval/data/trackers/mot_challenge/<TRACKER_NAME>/`.
   - Example expected summary path: `TrackEval/data/trackers/mot_challenge/YOLO_KF/pedestrian_summary.txt`
 
-KALMAN-YOLO — per-sequence results (HOTA / MOTA / IDF1)
+KALMAN-YOLO — combined overall results (HOTA / MOTA / IDF1)
 
-| Sequence | HOTA | MOTA | IDF1 | Notes |
-|---|---:|---:|---:|---|
-| MOT17-02-FRCNN | N/A | N/A | N/A | no summary file found in repo |
-| MOT17-04-FRCNN | N/A | N/A | N/A | no summary file found in repo |
-| MOT17-05-FRCNN | N/A | N/A | N/A | no summary file found in repo |
-| MOT17-09-FRCNN | N/A | N/A | N/A | no summary file found in repo |
-| MOT17-10-FRCNN | N/A | N/A | N/A | no summary file found in repo |
-| MOT17-11-FRCNN | N/A | N/A | N/A | no summary file found in repo |
-| MOT17-13-FRCNN | N/A | N/A | N/A | no summary file found in repo |
-| **Overall (train)** | N/A | N/A | N/A | no combined summary found |
+| Model | HOTA | MOTA | IDF1 | DetA | AssA | MOTP | Notes |
+|---|---:|---:|---:|---:|---:|---:|---|
+| KALMAN-YOLO (overall) | 42.025 | 42.424 | 50.708 | 38.601 | 46.196 | 81.178 | from `KALMAN-YOLO/yolokfoutputs/track_results/pedestrian_summary.txt` |
 
-Notes: To compute and save these results, run (from `KALMAN-YOLO`):
-
-```bash
-python yoloeval.py
-```
-
-This will copy tracker files into `TrackEval/data/...` and invoke `TrackEval/scripts/run_mot_challenge.py`, which will produce `pedestrian_summary.txt` and `pedestrian_detailed.csv` under the TrackEval tracker folder.
+**Detector:** Pre-computed YOLOv8n (not live YOLO inference)  
+**Tracking:** Kalman Filter with IoU-based Hungarian matching  
+**Output:** MOTChallenge format (.txt files)
 
 ---
 
 **DiffMOT-main**
 
 - Detection outputs: configured input directories are under `DiffMOT-main/datasets/MOT17/` (the detector outputs are expected to be placed under `det_dir` / `datasets`); the training/eval config writes outputs to `outputs/mot17` (see `DiffMOT-main/configs/mot.yaml` `save_dir: outputs/mot17`).
-- Final tracking outputs: expected at `DiffMOT-main/outputs/mot17/` (per `configs/mot.yaml` and TrackEval script). There is currently no `outputs/` directory in the repo state.
-- Evaluation outputs (TrackEval): `DiffMOT-main/TrackEval` is included; when `run_mot_challenge.py` (in `DiffMOT-main/TrackEval/scripts/`) is executed it writes summary files into the tracker output folder (configured as `outputs/mot17/<tracker>/`).
+- Final tracking outputs: available at `DiffMOT-main/outputs/mot17/diffmot/` in the repository.
+- Evaluation outputs (TrackEval): the combined summary file is available at `DiffMOT-main/outputs/mot17/diffmot/pedestrian_summary.txt` and is used for the overall metric row below.
 
-DiffMOT-main — per-sequence results (HOTA / MOTA / IDF1)
+DiffMOT-main — combined overall results (HOTA / MOTA / IDF1)
 
-| Sequence | HOTA | MOTA | IDF1 | Notes |
-|---|---:|---:|---:|---|
-| MOT17-02-FRCNN | N/A | N/A | N/A | outputs/mot17 not found in repo |
-| MOT17-04-FRCNN | N/A | N/A | N/A | outputs/mot17 not found in repo |
-| MOT17-05-FRCNN | N/A | N/A | N/A | outputs/mot17 not found in repo |
-| MOT17-09-FRCNN | N/A | N/A | N/A | outputs/mot17 not found in repo |
-| MOT17-10-FRCNN | N/A | N/A | N/A | outputs/mot17 not found in repo |
-| MOT17-11-FRCNN | N/A | N/A | N/A | outputs/mot17 not found in repo |
-| MOT17-13-FRCNN | N/A | N/A | N/A | outputs/mot17 not found in repo |
-| **Overall (train)** | N/A | N/A | N/A | no combined summary found |
+| Model | HOTA | MOTA | IDF1 | DetA | AssA | MOTP | Notes |
+|---|---:|---:|---:|---:|---:|---:|---|
+| DiffMOT-main (overall) | 33.615 | 40.900 | 37.738 | 39.435 | 29.071 | 80.611 | from `DiffMOT-main/outputs/mot17/diffmot/pedestrian_summary.txt` |
 
-Notes: To run DiffMOT evaluation (from `DiffMOT-main/TrackEval`):
+**Detector:** Pre-computed YOLOv8n detections (framewise format)  
+**Tracking:** Diffusion-based Motion Prediction (D²MP) with association  
+**Output:** MOTChallenge format (.txt files)
 
-```bash
-# from repository root
-cd DiffMOT-main/TrackEval
-python scripts/run_mot_challenge.py
-```
+---
 
-This script expects `dataset_config` in `run_mot_challenge.py` to point to the correct `ROOT` and will generate `pedestrian_summary.txt` and `pedestrian_detailed.csv` under the configured `outputs/mot17/<tracker>/` folder.
+**BOTSORT + FastReID**
+
+- Evaluation outputs: summary file available at `SWIN-TRANSFORMER/BOTSORT-OUTPUT/track_results/pedestrian_summary.txt`.
+- Only the combined overall metrics are available in the repo file.
+
+BOTSORT + FastReID — overall results (HOTA / MOTA / IDF1)
+
+| Sequence | HOTA | MOTA | IDF1 | DetA | AssA | MOTP | Notes |
+|---|---:|---:|---:|---:|---:|---:|---|
+| **Overall (train)** | 43.609 | 40.828 | 52.656 | 40.108 | 47.920 | 80.531 | from `BOTSORT-FASTREID/TrackEval/data/trackers/mot_challenge/MOT17-train/BOTSORT_FASTREID/pedestrian_summary.txt` |
+
+**Detector:** Pre-computed YOLOv8n (not live YOLO inference)  
+**Tracking:** BoTSORT with FastReID SBS-S50 (ResNeSt50) ReID backbone  
+**Output:** MOTChallenge format (.txt files)
 
 ---
 
 Summary of findings
 
-- I found concrete final tracking output files for `KALMAN-YOLO` in `KALMAN-YOLO/yolokfoutputs/track_results/` (these are raw tracker outputs in MOTChallenge format).
-- I did not find any computed TrackEval summary files (`*_summary.txt` or `*_detailed.csv`) for either project in the repository. Therefore all metric table cells are currently marked `N/A`.
+- I found concrete final tracking output files for `KALMAN-YOLO` in `KALMAN-YOLO/yolokfoutputs/track_results/` (these are raw tracker outputs in MOTChallenge format), and I used `KALMAN-YOLO/yolokfoutputs/track_results/pedestrian_summary.txt` to populate the KALMAN-YOLO table.
+- I found combined evaluation summaries for the other approaches in the repository: `DiffMOT-main/outputs/mot17/diffmot/pedestrian_summary.txt` and `SWIN-TRANSFORMER/BOTSORT-OUTPUT/track_results/pedestrian_summary.txt`.
 
 Next steps I can take (pick one):
 
