@@ -12,10 +12,12 @@
 # Always keep this file and top-level docs
 !.gitignore
 !README.md
-!RESULTS.md
-!PROJECT_STRUCTURE.md
-!TRACKING_RESULTS_LOCATIONS.md
-
+RESULTS.md
+PROJECT_STRUCTURE.md
+TRACKING_RESULTS_LOCATIONS.md
+*.mp4
+*.avi
+*.mov
 # 2. BOTSORT-FASTREID  — keep only our scripts and outputs
 !BOTSORT-FASTREID/botsort_mot.py
 !BOTSORT-FASTREID/eval_only.py
