@@ -10,7 +10,7 @@
 !*/
 
 # Always keep this file and top-level docs
-!.gitignore
+.gitignore
 !README.md
 RESULTS.md
 PROJECT_STRUCTURE.md
@@ -21,15 +21,25 @@ TRACKING_RESULTS_LOCATIONS.md
 # 2. BOTSORT-FASTREID  — keep only our scripts and outputs
 !BOTSORT-FASTREID/botsort_mot.py
 !BOTSORT-FASTREID/eval_only.py
-!BOTSORT-FASTREID/TRACKING.txt
 
 # BOTSORT-OUTPUT — entire folder
-!BOTSORT-FASTREID/BOTSORT-OUTPUT/
-!BOTSORT-FASTREID/BOTSORT-OUTPUT/**
+!BOTSORT-FASTREID/BOTSORT-OUTPUT/track_results/**
 
 # Ignore the cloned BoT-SORT repo and TrackEval internals
 BOTSORT-FASTREID/BoT-SORT/
-BOTSORT-FASTREID/TrackEval/
+BOTSORT-FASTREID/TrackEval/data/gt/
+
+BOTSORT-FASTREID/TrackEval/data/trackers/mot_challenge/MOT17-train/BOTSORT_FASTREID/data/
+
+BOTSORT-FASTREID/TrackEval/scripts/
+
+BOTSORT-FASTREID/TrackEval/trackeval/
+
+BOTSORT-FASTREID/TrackEval/docs/
+
+BOTSORT-FASTREID/TrackEval/tests/                                                                                                                                   !BOTSORT-FASTREID/TrackEval/data/trackers/mot_challenge/MOT17-train/BOTSORT_FASTREID/pedestrian_summary.txt
+
+!BOTSORT-FASTREID/TrackEval/data/trackers/mot_challenge/MOT17-train/BOTSORT_FASTREID/pedestrian_detailed.csv
 
 # 3. KALMAN-YOLO  — keep scripts and outputs
 !KALMAN-YOLO/yolomot.py
