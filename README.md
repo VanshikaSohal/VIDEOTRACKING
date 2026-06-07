@@ -31,7 +31,6 @@ VIDEOTRACKING/
 │   ├── eval_only.py                    # TrackEval evaluation helper
 │   ├── TRACKING.txt                    # Run notes
 │   └── BOTSORT-OUTPUT/                 # Tracking outputs (tracked in Git)
-│       ├── botsort_fastreid_tracking.mp4
 │       └── track_results/
 │           ├── MOT17-02-FRCNN.txt
 │           ├── MOT17-04-FRCNN.txt
@@ -260,7 +259,6 @@ MOT17 Frames + YOLOv8n Pre-computed Detections (det.txt)
 | Output Type | Path |
 |---|---|
 | Tracking results (per sequence) | `BOTSORT-FASTREID/BOTSORT-OUTPUT/track_results/*.txt` |
-| Tracking video | `BOTSORT-FASTREID/BOTSORT-OUTPUT/botsort_fastreid_tracking.mp4` |
 | Evaluation summary | `BOTSORT-FASTREID/TrackEval/data/trackers/mot_challenge/MOT17-train/BOTSORT_FASTREID/pedestrian_summary.txt` |
 | Detailed metrics (CSV) | `BOTSORT-FASTREID/TrackEval/data/trackers/mot_challenge/MOT17-train/BOTSORT_FASTREID/pedestrian_detailed.csv` |
 
@@ -321,7 +319,7 @@ python scripts/run_mot_challenge.py
 All pipelines use the **MOT17** benchmark dataset.
 
 - 7 training sequences evaluated: MOT17-02, 04, 05, 09, 10, 11, 13
-- Detector variant used: **FRCNN** (Faster R-CNN)
+- Detector variant used: **YOLOv8n**
 - Dataset not included in repository due to size — download from [MOTChallenge](https://motchallenge.net/data/MOT17/)
 
 ---
