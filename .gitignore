@@ -21,25 +21,15 @@ TRACKING_RESULTS_LOCATIONS.md
 # 2. BOTSORT-FASTREID  — keep only our scripts and outputs
 !BOTSORT-FASTREID/botsort_mot.py
 !BOTSORT-FASTREID/eval_only.py
+BOTSORT-FASTREID/TRACKING.txt
 
 # BOTSORT-OUTPUT — entire folder
-!BOTSORT-FASTREID/BOTSORT-OUTPUT/track_results/**
+!BOTSORT-FASTREID/BOTSORT-OUTPUT/
+!BOTSORT-FASTREID/BOTSORT-OUTPUT/**
 
 # Ignore the cloned BoT-SORT repo and TrackEval internals
 BOTSORT-FASTREID/BoT-SORT/
-BOTSORT-FASTREID/TrackEval/data/gt/
-
-BOTSORT-FASTREID/TrackEval/data/trackers/mot_challenge/MOT17-train/BOTSORT_FASTREID/data/
-
-BOTSORT-FASTREID/TrackEval/scripts/
-
-BOTSORT-FASTREID/TrackEval/trackeval/
-
-BOTSORT-FASTREID/TrackEval/docs/
-
-BOTSORT-FASTREID/TrackEval/tests/                                                                                                                                   !BOTSORT-FASTREID/TrackEval/data/trackers/mot_challenge/MOT17-train/BOTSORT_FASTREID/pedestrian_summary.txt
-
-!BOTSORT-FASTREID/TrackEval/data/trackers/mot_challenge/MOT17-train/BOTSORT_FASTREID/pedestrian_detailed.csv
+BOTSORT-FASTREID/TrackEval/
 
 # 3. KALMAN-YOLO  — keep scripts and outputs
 !KALMAN-YOLO/yolomot.py
@@ -71,46 +61,46 @@ KALMAN-YOLO/TrackEval/
 # Top-level .py files
 !DiffMOT-main/main.py
 !DiffMOT-main/diffmot.py
-!DiffMOT-main/mot_data_process.py
-!DiffMOT-main/dancetrack_data_process.py
-!DiffMOT-main/sports_data_process.py
+DiffMOT-main/mot_data_process.py
+DiffMOT-main/dancetrack_data_process.py
+DiffMOT-main/sports_data_process.py
 !DiffMOT-main/convert_mot17_to_framewise.py
 !DiffMOT-main/createdetfor4.py
 
 # Notebook + misc text files
 !DiffMOT-main/CODEFILE.ipynb
 !DiffMOT-main/requirement.txt
-!DiffMOT-main/TRACKING.txt
-!DiffMOT-main/LICENSE
-!DiffMOT-main/README.md
+DiffMOT-main/TRACKING.txt
+DiffMOT-main/LICENSE
+DiffMOT-main/README.md
 
 # configs/ — all yaml files
-!DiffMOT-main/configs/
-!DiffMOT-main/configs/*.yaml
-!DiffMOT-main/configs/*.yml
+DiffMOT-main/configs/
+DiffMOT-main/configs/*.yaml
+DiffMOT-main/configs/*.yml
 
 # models/ — all .py files
-!DiffMOT-main/models/
-!DiffMOT-main/models/*.py
+DiffMOT-main/models/
+DiffMOT-main/models/*.py
 
 # tracker/ — all .py files (including ocsort_tracker subpackage)
-!DiffMOT-main/tracker/
-!DiffMOT-main/tracker/*.py
-!DiffMOT-main/tracker/ocsort_tracker/
-!DiffMOT-main/tracker/ocsort_tracker/*.py
+DiffMOT-main/tracker/
+DiffMOT-main/tracker/*.py
+DiffMOT-main/tracker/ocsort_tracker/
+DiffMOT-main/tracker/ocsort_tracker/*.py
 
 # tracking_utils/ — all .py files
-!DiffMOT-main/tracking_utils/
-!DiffMOT-main/tracking_utils/*.py
+DiffMOT-main/tracking_utils/
+DiffMOT-main/tracking_utils/*.py
 
 # dataset/ — package files
-!DiffMOT-main/dataset/
-!DiffMOT-main/dataset/*.py
+DiffMOT-main/dataset/
+DiffMOT-main/dataset/*.py
 
 # external/adaptors — our adapter code only
-!DiffMOT-main/external/
-!DiffMOT-main/external/adaptors/
-!DiffMOT-main/external/adaptors/*.py
+DiffMOT-main/external/
+DiffMOT-main/external/adaptors/
+DiffMOT-main/external/adaptors/*.py
 
 # outputs/ — entire folder
 !DiffMOT-main/outputs/
