@@ -128,7 +128,7 @@ def run_tracking_and_video():
             print(f"[WARN] det.txt not found for {seq}, skipping.")
             continue
 
-        # ── Load pre-computed YOLOv8n detections ──
+        # Load pre-computed YOLOv8n detections
         det_dict = load_detections(det_file)
         print(f"  [det.txt] Loaded detections for {len(det_dict)} frames from {seq}")
 
@@ -162,7 +162,7 @@ def run_tracking_and_video():
 
                 frame_resized = cv2.resize(frame, (VIDEO_W, VIDEO_H))
 
-                # ── Use pre-computed YOLOv8n detections (NO live YOLO) ──
+                # Use pre-computed YOLOv8n detections (no live YOLO)
                 dets = det_dict.get(frame_id, [])
                 dets_np = np.array(dets, dtype=float) if dets else np.empty((0, 6))
 

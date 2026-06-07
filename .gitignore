@@ -1,84 +1,154 @@
-# Weights
-pretrained/
-*.pt
-*.pth
-*.pkl
-*.ckpt
 
-# Datasets
-datasets/MOT17/test/
-datasets/MOT17/train/*/img1/
-datasets/MOT17/train/*/det_framewise/
-datasets/**/*.jpg
-datasets/**/*.png
+# VIDEOTRACKING .gitignore
+# Everything is ignored by default via catch-alls below.
+# Specific files/folders are explicitly un-ignored with !
 
-# DiffMOT-main nested datasets
-DiffMOT-main/pretrained/
-DiffMOT-main/*.pt
-DiffMOT-main/*.pth
-DiffMOT-main/*.pkl
-DiffMOT-main/*.ckpt
+# 1. IGNORE EVERYTHING first, then carve out what we want
+*
+
+# Always allow directories to be traversed (so nested ! rules work)
+!*/
+
+# Always keep this file and top-level docs
+!.gitignore
+!README.md
+!RESULTS.md
+!PROJECT_STRUCTURE.md
+!TRACKING_RESULTS_LOCATIONS.md
+
+# 2. BOTSORT-FASTREID  — keep only our scripts and outputs
+!BOTSORT-FASTREID/botsort_mot.py
+!BOTSORT-FASTREID/eval_only.py
+!BOTSORT-FASTREID/TRACKING.txt
+
+# BOTSORT-OUTPUT — entire folder
+!BOTSORT-FASTREID/BOTSORT-OUTPUT/
+!BOTSORT-FASTREID/BOTSORT-OUTPUT/**
+
+# Ignore the cloned BoT-SORT repo and TrackEval internals
+BOTSORT-FASTREID/BoT-SORT/
+BOTSORT-FASTREID/TrackEval/
+
+# 3. KALMAN-YOLO  — keep scripts and outputs
+!KALMAN-YOLO/yolomot.py
+!KALMAN-YOLO/yoloeval.py
+!KALMAN-YOLO/requirements.txt
+
+# yolokfoutputs — entire folder
+!KALMAN-YOLO/yolokfoutputs/
+!KALMAN-YOLO/yolokfoutputs/**
+
+# MOT17 dataset — only det.txt files
+!KALMAN-YOLO/MOT17/
+!KALMAN-YOLO/MOT17/*/
+!KALMAN-YOLO/MOT17/*/det/
+!KALMAN-YOLO/MOT17/*/det/det.txt
+
+# Ignore everything else in MOT17 (images, gt, seqinfo, etc.)
+KALMAN-YOLO/MOT17/*/img1/
+KALMAN-YOLO/MOT17/*/gt/
+KALMAN-YOLO/MOT17/*/seqinfo.ini
+KALMAN-YOLO/MOT17/**/*.jpg
+KALMAN-YOLO/MOT17/**/*.png
+
+# Ignore cloned TrackEval
+KALMAN-YOLO/TrackEval/
+
+# 4. DiffMOT-main  — keep all our .py files, notebook, outputs
+
+# Top-level .py files
+!DiffMOT-main/main.py
+!DiffMOT-main/diffmot.py
+!DiffMOT-main/mot_data_process.py
+!DiffMOT-main/dancetrack_data_process.py
+!DiffMOT-main/sports_data_process.py
+!DiffMOT-main/convert_mot17_to_framewise.py
+!DiffMOT-main/createdetfor4.py
+
+# Notebook + misc text files
+!DiffMOT-main/CODEFILE.ipynb
+!DiffMOT-main/requirement.txt
+!DiffMOT-main/TRACKING.txt
+!DiffMOT-main/LICENSE
+!DiffMOT-main/README.md
+
+# configs/ — all yaml files
+!DiffMOT-main/configs/
+!DiffMOT-main/configs/*.yaml
+!DiffMOT-main/configs/*.yml
+
+# models/ — all .py files
+!DiffMOT-main/models/
+!DiffMOT-main/models/*.py
+
+# tracker/ — all .py files (including ocsort_tracker subpackage)
+!DiffMOT-main/tracker/
+!DiffMOT-main/tracker/*.py
+!DiffMOT-main/tracker/ocsort_tracker/
+!DiffMOT-main/tracker/ocsort_tracker/*.py
+
+# tracking_utils/ — all .py files
+!DiffMOT-main/tracking_utils/
+!DiffMOT-main/tracking_utils/*.py
+
+# dataset/ — package files
+!DiffMOT-main/dataset/
+!DiffMOT-main/dataset/*.py
+
+# external/adaptors — our adapter code only
+!DiffMOT-main/external/
+!DiffMOT-main/external/adaptors/
+!DiffMOT-main/external/adaptors/*.py
+
+# outputs/ — entire folder
+!DiffMOT-main/outputs/
+!DiffMOT-main/outputs/**
+
+# datasets/MOT17/train/*/det/det.txt — only det.txt
+!DiffMOT-main/datasets/
+!DiffMOT-main/datasets/MOT17/
+!DiffMOT-main/datasets/MOT17/train/
+!DiffMOT-main/datasets/MOT17/train/*/
+!DiffMOT-main/datasets/MOT17/train/*/det/
+!DiffMOT-main/datasets/MOT17/train/*/det/det.txt
+
+# Ignore everything else inside DiffMOT datasets (images, gt, etc.)
 DiffMOT-main/datasets/MOT17/test/
 DiffMOT-main/datasets/MOT17/train/*/img1/
 DiffMOT-main/datasets/MOT17/train/*/det_framewise/
 DiffMOT-main/datasets/**/*.jpg
 DiffMOT-main/datasets/**/*.png
 
-# DiffMOT-main nested externals
-DiffMOT-main/experiments/external/
-DiffMOT-main/TrackEval/.git
-DiffMOT-main/external/fastreid/tools/deploy/test_data/
+# TrackEval only scripts folder
+!DiffMOT-main/TrackEval/
+!DiffMOT-main/TrackEval/scripts/
+!DiffMOT-main/TrackEval/scripts/*.py
 
-# DiffMOT-main logs
-DiffMOT-main/experiments/**/*.log
-DiffMOT-main/experiments/**/events.out.tfevents.*
+# Ignore the rest of TrackEval internals
+DiffMOT-main/TrackEval/trackeval/
+DiffMOT-main/TrackEval/docs/
+DiffMOT-main/TrackEval/tests/
+DiffMOT-main/TrackEval/data/
 
-# Cache
+# Ignore pretrained weights and cloned external fastreid
+DiffMOT-main/pretrained/
+DiffMOT-main/external/fastreid/
+DiffMOT-main/*.pt
+DiffMOT-main/*.pth
+DiffMOT-main/*.pkl
+DiffMOT-main/*.ckpt
+
+# 5. SWIN-TRANSFORMER  — ignore entirely (legacy outputs only)
+SWIN-TRANSFORMER/
+
+# 6. Global ignores (always, everywhere)
 __pycache__/
 *.pyc
 *.pyo
 .ipynb_checkpoints/
-
-# IDE & OS
 .idea/
+.vscode/
 .DS_Store
 desktop.ini
-
-# External nested repos
-experiments/external/
-
-# TrackEval nested git
-TrackEval/.git
-# Test images in external
-external/fastreid/tools/deploy/test_data/
-
-# Logs and TensorBoard
-experiments/**/*.log
-experiments/**/events.out.tfevents.*
-RESULTS_SUMMARY.md
-PROJECT_TREE.md
-TRACKING_RESULTS_LOCATIONS.md
-PROJECT_SUMMARY.md
-# Cloned repos — not our code
-BOTSORT-FASTREID/BoT-SORT/
-KALMAN-YOLO/TrackEval/trackeval/
-KALMAN-YOLO/TrackEval/docs/
-KALMAN-YOLO/TrackEval/tests/
-KALMAN-YOLO/TrackEval/scripts/
-BOTSORT-FASTREID/TrackEval/trackeval/
-BOTSORT-FASTREID/TrackEval/docs/
-BOTSORT-FASTREID/TrackEval/tests/
-BOTSORT-FASTREID/TrackEval/scripts/
-DiffMOT-main/TrackEval/trackeval/
-DiffMOT-main/TrackEval/docs/
-DiffMOT-main/TrackEval/tests/
-DiffMOT-main/TrackEval/scripts/
-
-# KALMAN-YOLO dataset
-KALMAN-YOLO/MOT17/
-
-# BoT-SORT cloned repo
-BOTSORT-FASTREID/BoT-SORT/
-
-# SWIN legacy
-SWIN-TRANSFORMER/
+*.log
+*.tfevents.*

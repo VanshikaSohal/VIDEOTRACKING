@@ -56,7 +56,7 @@ class DiffMOT:
         torch.backends.cudnn.benchmark = True
         self._build()
 
-    # ===================== TRAIN =====================
+    # TRAIN
     def train(self):
         for epoch in range(1, self.config.epochs + 1):
 
@@ -87,7 +87,7 @@ class DiffMOT:
                 torch.save(ckpt, save_path)
                 print(f"[CHECKPOINT SAVED] {save_path}")
 
-    # ===================== EVAL (FIXED) =====================
+    # EVAL
     def eval(self):
 
         det_root = self.config.det_dir
@@ -143,7 +143,7 @@ class DiffMOT:
                 # x,y,w,h,score
                 dets = dets_raw[:, 1:6]
 
-                # ================= IMAGE FIX =================
+    # IMAGE FIX
                 img = None
                 if img_root is not None:
                     try:
@@ -193,7 +193,7 @@ class DiffMOT:
 
             print(f"[DONE] {seq} saved")
 
-    # ===================== BUILD =====================
+    # BUILD
     def _build(self):
         self._build_dir()
         self._build_encoder()

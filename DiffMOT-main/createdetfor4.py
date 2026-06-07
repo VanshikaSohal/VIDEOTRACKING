@@ -24,7 +24,7 @@ def convert(det_file, out_dir):
     print("DONE:", out_dir)
 
 
-# =========================
+# Config
 base_dir = r"C:\Users\vansh\VANSHIKASOHAL\DiffMOT-main\datasets\MOT17\train"
 seq = "MOT17-04-FRCNN"
 
@@ -37,4 +37,4 @@ print("Exists:", os.path.exists(det_file))
 if os.path.exists(det_file):
     convert(det_file, out_dir)
 else:
-    print("❌ det.txt NOT FOUND:", det_file)
+print("det.txt NOT FOUND:", det_file)

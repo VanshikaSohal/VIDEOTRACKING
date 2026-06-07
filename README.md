@@ -17,72 +17,138 @@ A comparative study of **classical**, **diffusion-based**, and **appearance-base
 
 ## Repository Structure
 
+Only files tracked in Git are shown below. Datasets (images, gt), model weights, cloned libraries, and cache are git-ignored.
+
 ```
 VIDEOTRACKING/
-├── BOTSORT-FASTREID/                  # BoTSORT + FastReID SBS-S50 (ResNeSt50) pipeline
-│   ├── botsort_mot.py                  # BoTSORT tracking script with FastReID SBS-S50 (ResNeSt50) backbone
-│   ├── eval_only.py                    # Optional evaluation helper
-│   ├── BOTSORT-OUTPUT/
-│   │   └── track_results/              # Per-sequence tracking .txt files
-│   │       └── botsort_fastreid_tracking.mp4  # Tracking video output
-│   └── TrackEval/                      # Evaluation toolkit (cloned)
-│       └── data/trackers/mot_challenge/MOT17-train/BOTSORT_FASTREID/
-│           ├── pedestrian_summary.txt  # Overall metric summary
-│           ├── pedestrian_detailed.csv # Per-sequence metrics
-│           └── (sequence .txt files)   # Per-sequence tracking results
+├── README.md
+├── RESULTS.md
+├── PROJECT_STRUCTURE.md
+├── TRACKING_RESULTS_LOCATIONS.md
+│
+├── BOTSORT-FASTREID/                   # BoTSORT + FastReID SBS-S50 pipeline
+│   ├── botsort_mot.py                  # Main tracking script
+│   ├── eval_only.py                    # TrackEval evaluation helper
+│   ├── TRACKING.txt                    # Run notes
+│   └── BOTSORT-OUTPUT/                 # Tracking outputs (tracked in Git)
+│       ├── botsort_fastreid_tracking.mp4
+│       └── track_results/
+│           ├── MOT17-02-FRCNN.txt
+│           ├── MOT17-04-FRCNN.txt
+│           ├── MOT17-05-FRCNN.txt
+│           ├── MOT17-09-FRCNN.txt
+│           ├── MOT17-10-FRCNN.txt
+│           ├── MOT17-11-FRCNN.txt
+│           └── MOT17-13-FRCNN.txt
+│   # NOTE: BoT-SORT/ and TrackEval/ are cloned libraries — git-ignored
+│   # Eval summary: BOTSORT-FASTREID/TrackEval/data/trackers/mot_challenge/
+│   #               MOT17-train/BOTSORT_FASTREID/pedestrian_summary.txt
 │
 ├── KALMAN-YOLO/                        # YOLOv8 + Kalman Filter tracker
 │   ├── yolomot.py                      # Main tracking script
 │   ├── yoloeval.py                     # TrackEval evaluation wrapper
-│   ├── requirements.txt                # Python dependencies
-│   ├── mot17_yolo_trackeval_files.txt  # MOT17 sequence list for eval
-│   ├── MOT17/                          # MOT17 dataset (7 sequences)
+│   ├── requirements.txt
+│   ├── MOT17/                          # Partial dataset (only det.txt tracked)
 │   │   └── MOT17-XX-FRCNN/
-│   │       ├── det/det.txt             # Per-frame detections (YOLOv8n pre-computed)
-│   │       ├── gt/gt.txt               # Ground truth annotations
-│   │       └── seqinfo.ini             # Sequence metadata
-│   ├── TrackEval/                      # Evaluation toolkit (cloned)
-│   │   └── data/trackers/mot_challenge/MOT17-train/YOLO_KF/
-│   │       ├── pedestrian_summary.txt  # Overall metric summary
-│   │       ├── pedestrian_detailed.csv # Per-sequence metrics
-│   │       └── pedestrian_plot.png     # Metric plots
-│   └── yolokfoutputs/
-│       └── track_results/              # Per-sequence tracking .txt files
+│   │       └── det/
+│   │           └── det.txt             # Pre-computed detections (tracked)
+│   │   # img1/, gt/, seqinfo.ini → git-ignored
+│   └── yolokfoutputs/                  # All outputs tracked in Git
+│       └── track_results/
+│           ├── MOT17-02-FRCNN.txt
+│           ├── MOT17-04-FRCNN.txt
+│           ├── MOT17-05-FRCNN.txt
+│           ├── MOT17-09-FRCNN.txt
+│           ├── MOT17-10-FRCNN.txt
+│           ├── MOT17-11-FRCNN.txt
+│           ├── MOT17-13-FRCNN.txt
+│           ├── pedestrian_summary.txt
+│           ├── pedestrian_detailed.csv
+│           ├── pedestrian_plot.pdf
+│           └── pedestrian_plot.png
+│   # NOTE: TrackEval/ is a cloned library — git-ignored
 │
-├── DiffMOT-main/                       # YOLOv8 + Diffusion Model tracker
-│   ├── main.py                         # CLI entrypoint
-│   ├── diffmot.py                      # Model trainer and evaluator
-│   ├── requirement.txt                 # Python dependencies
-│   ├── configs/                        # YAML experiment configs
-│   │   ├── mot.yaml                    # MOT training config
-│   │   └── mot17_test.yaml             # MOT17 test config
-│   ├── models/                         # Model architecture
-│   │   ├── diffusion.py                # Diffusion model utilities
-│   │   ├── denoising_diffusion_pytorch.py  # Core diffusion model
-│   │   ├── autoencoder.py              # Autoencoder module
-│   │   └── condition_embedding.py      # Motion condition embedding
-│   ├── tracker/                        # Tracker implementation
-│   │   ├── DiffMOTtracker.py           # Main DiffMOT tracker class
-│   │   └── matching.py                 # Association algorithms
-│   ├── tracking_utils/                 # Helper utilities
-│   │   └── kalman_filter.py            # Kalman filter utility (fallback)
-│   ├── datasets/MOT17/                 # MOT17 dataset
-│   ├── assets/diffmot_git.png          # Architecture diagram
-│   └── outputs/mot17/diffmot/          # Evaluation outputs
-│       ├── MOT17-XX-FRCNN.txt          # Per-sequence tracking results
-│       ├── pedestrian_summary.txt      # Overall metric summary
-│       ├── pedestrian_detailed.csv     # Per-sequence metrics
-│       └── pedestrian_plot.png         # Metric plots
-│
-├── SWIN-TRANSFORMER/                  # Alternative BoTSORT output location (legacy)
-│   └── BOTSORT-OUTPUT/
-│       └── track_results/              # Per-sequence tracking .txt files
-│
-├── KALMAN-YOLO (TrackEval copy)/       # Additional TrackEval instance
-├── README.md                           # This file (project overview)
-├── RESULTS.md                          # Combined evaluation results
-├── RESULTS_LOCATION.md                 # (DEPRECATED - use TRACKING_RESULTS_LOCATIONS.md)
-└── TRACKING_RESULTS_LOCATIONS.md       # Detailed results file paths
+└── DiffMOT-main/                       # YOLOv8 + Diffusion Model tracker
+    ├── main.py
+    ├── diffmot.py
+    ├── mot_data_process.py
+    ├── dancetrack_data_process.py
+    ├── sports_data_process.py
+    ├── convert_mot17_to_framewise.py
+    ├── createdetfor4.py
+    ├── CODEFILE.ipynb
+    ├── requirement.txt
+    ├── TRACKING.txt
+    ├── LICENSE
+    ├── README.md
+    ├── configs/
+    │   ├── mot.yaml
+    │   ├── mot17_test.yaml
+    │   ├── mot20_test.yaml
+    │   ├── dancetrack.yaml
+    │   ├── dancetrack_test.yaml
+    │   ├── sportsmot.yaml
+    │   └── sportsmot_test.yaml
+    ├── models/
+    │   ├── autoencoder.py
+    │   ├── common.py
+    │   ├── condition_embedding.py
+    │   ├── denoising_diffusion_pytorch.py
+    │   └── diffusion.py
+    ├── tracker/
+    │   ├── DiffMOTtracker.py
+    │   ├── matching.py
+    │   ├── basetrack.py
+    │   ├── cmc.py
+    │   ├── gmc.py
+    │   ├── embedding.py
+    │   └── ocsort_tracker/
+    │       ├── association.py
+    │       ├── kalmanfilter.py
+    │       └── ocsort.py
+    ├── tracking_utils/
+    │   ├── evaluation.py
+    │   ├── io.py
+    │   ├── kalman_filter.py
+    │   ├── NSA_kalman_filter.py
+    │   ├── log.py
+    │   ├── nms.py
+    │   ├── parse_config.py
+    │   ├── timer.py
+    │   ├── utils.py
+    │   └── visualization.py
+    ├── dataset/
+    │   ├── __init__.py
+    │   └── dataset.py
+    ├── external/
+    │   └── adaptors/
+    │       ├── __init__.py
+    │       └── fastreid_adaptor.py
+    │   # external/fastreid/ is a cloned library — git-ignored
+    ├── datasets/                        # Partial dataset (only det.txt tracked)
+    │   └── MOT17/train/MOT17-XX-FRCNN/
+    │       └── det/
+    │           └── det.txt             # Pre-computed detections (tracked)
+    │   # img1/, gt/, test/, det_framewise/ → git-ignored
+    ├── TrackEval/
+    │   └── scripts/                    # Only scripts folder tracked
+    │       ├── run_mot_challenge.py
+    │       └── (other run_*.py scripts)
+    │   # trackeval/, docs/, tests/, data/ → git-ignored
+    └── outputs/                        # All outputs tracked in Git
+        └── mot17/diffmot/
+            ├── MOT17-02-FRCNN.txt
+            ├── MOT17-04-FRCNN.txt
+            ├── MOT17-05-FRCNN.txt
+            ├── MOT17-09-FRCNN.txt
+            ├── MOT17-10-FRCNN.txt
+            ├── MOT17-11-FRCNN.txt
+            ├── MOT17-13-FRCNN.txt
+            ├── pedestrian_summary.txt
+            ├── pedestrian_detailed.csv
+            ├── pedestrian_plot.pdf
+            ├── pedestrian_plot.png
+            └── TERMINALRESULTS.txt
 ```
 
 ---
@@ -215,7 +281,7 @@ python yolomot.py
 python yoloeval.py
 ```
 
-> Requires: `yolov8x.pt` weights in `KALMAN-YOLO/` (not tracked in Git due to size)
+> Requires: `yolov8x.pt` weights in `BOTSORT-FASTREID/BoT-SORT/yolov8x.pt` (already present in repo)
 
 ### DiffMOT-main
 
@@ -227,7 +293,7 @@ pip install -r requirement.txt
 python main.py --config configs/mot17_test.yaml
 ```
 
-> Requires: Pretrained model weights in `DiffMOT-main/pretrained/` and MOT17 dataset in `DiffMOT-main/datasets/MOT17/`
+> Requires: Pretrained motion model weights in `DiffMOT-main/pretrained/` (git-ignored, download separately) and MOT17 dataset in `DiffMOT-main/datasets/MOT17/` (git-ignored)
 
 ### BoTSORT + FastReID (SBS-S50/ResNeSt50)
 
@@ -292,10 +358,10 @@ This project compares 3 multi-object tracking approaches on MOT17 benchmark (7 F
 
 1. KALMAN-YOLO (Classical): YOLOv8 detection + Kalman Filter tracking. Code in `KALMAN-YOLO/yolomot.py`.
 2. DiffMOT (Diffusion-based): YOLOv8 detection + Diffusion Model motion prediction. Code in `DiffMOT-main/`.
-3. BoTSORT + FastReID (Transformer-based): YOLOv8 detection + BoTSORT tracker with FastReID SBS-S50 (ResNeSt50) ReID backbone. Code in `botsort_mot.py`.
+3. BoTSORT + FastReID (Appearance-based): YOLOv8 detection + BoTSORT tracker with FastReID SBS-S50 (ResNeSt50) ReID backbone. Code in `BOTSORT-FASTREID/botsort_mot.py`.
 
 **Evaluation:**
-All 3 trackers can be evaluated using TrackEval, with outputs stored in `KALMAN-YOLO/yolokfoutputs/track_results/`, `DiffMOT-main/outputs/mot17/diffmot/`, and `SWIN-TRANSFORMER/BOTSORT-OUTPUT/track_results/`.
+All 3 trackers can be evaluated using TrackEval, with outputs stored in `KALMAN-YOLO/yolokfoutputs/track_results/`, `DiffMOT-main/outputs/mot17/diffmot/`, and `BOTSORT-FASTREID/TrackEval/data/trackers/mot_challenge/MOT17-train/BOTSORT_FASTREID/`.
 
 ---
 

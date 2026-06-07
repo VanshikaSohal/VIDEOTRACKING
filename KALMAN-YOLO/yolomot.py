@@ -33,7 +33,7 @@ VIDEO_W   = 1920
 VIDEO_H   = 1080
 
 
-# ── KALMAN FILTER ──────────────────────────────────────────────
+# KALMAN FILTER
 
 def bbox_to_z(bbox):
     """[x1,y1,x2,y2] → [cx, cy, area, ratio]"""
@@ -221,7 +221,7 @@ class SORT:
         return matched, unmatched_dets, unmatched_trks
 
 
-# ── VISUALISATION ──────────────────────────────────────────────
+# VISUALISATION
 
 PALETTE = [
     (255,  56,  56), (255, 157, 151), (255, 112,  31), (255, 178,  29),
@@ -275,7 +275,7 @@ def make_transition_slide(seq_name, w=VIDEO_W, h=VIDEO_H, n_frames=30):
     return frames
 
 
-# ── LOAD DETECTIONS FROM det.txt ──────────────────────────────
+# LOAD DETECTIONS FROM det.txt
 
 def load_detections(seq):
     """
@@ -310,7 +310,7 @@ def load_detections(seq):
     return detections
 
 
-# ── MAIN TRACKING + VIDEO ─────────────────────────────────────
+# MAIN TRACKING + VIDEO
 
 def run_tracking_and_video():
     os.makedirs(OUTPUT_ROOT, exist_ok=True)
@@ -350,7 +350,7 @@ def run_tracking_and_video():
         print(f"  Processing: {seq}  ({len(frames)} frames)")
         print(f"{'='*60}")
 
-        # ── Load pre-computed YOLOv8n detections ──
+        # Load pre-computed YOLOv8n detections
         detections = load_detections(seq)
 
         # Write transition slide
@@ -371,13 +371,13 @@ def run_tracking_and_video():
                     continue
                 frame = cv2.resize(frame, (VIDEO_W, VIDEO_H))
 
-                # ── Use pre-computed detections (no live YOLO) ──
+                # Use pre-computed detections (no live YOLO)
                 dets_np = detections.get(frame_id, np.empty((0, 5)))
 
-                # ── Kalman Filter update ──
+                # Kalman Filter update
                 tracks = tracker.update(dets_np)
 
-                # ── Write MOTChallenge result ──
+                # Write MOTChallenge result
                 for trk in tracks:
                     x1, y1, x2, y2, tid = trk
                     w_box = x2 - x1
@@ -385,7 +385,7 @@ def run_tracking_and_video():
                     rf.write(f"{frame_id},{int(tid)},{x1:.2f},{y1:.2f},"
                              f"{w_box:.2f},{h_box:.2f},1,-1,-1,-1\n")
 
-                # ── Draw & write video frame ──
+                # Draw and write video frame
                 frame = draw_tracks(frame, tracks, seq, frame_id, total_frames)
                 writer.write(frame)
 
@@ -399,7 +399,7 @@ def run_tracking_and_video():
     return track_results_dir
 
 
-# ── TRACKEVAL SETUP ───────────────────────────────────────────
+# TRACKEVAL SETUP
 
 def setup_trackeval(track_results_dir):
     print("\n" + "="*60)
@@ -460,7 +460,7 @@ def setup_trackeval(track_results_dir):
     return TRACKER_NAME
 
 
-# ── EVALUATION ────────────────────────────────────────────────
+# EVALUATION
 
 def run_evaluation(tracker_name):
     print("\n" + "="*60)
@@ -496,7 +496,7 @@ def run_evaluation(tracker_name):
               f"MOT17-train/{tracker_name}/")
 
 
-# ── ENTRY POINT ───────────────────────────────────────────────
+# ENTRY POINT
 
 if __name__ == "__main__":
     print("\n" + "="*60)
