@@ -233,6 +233,22 @@ MOT17 Frames + YOLOv8n Pre-computed Detections (det.txt)
 
 ---
 
+### HOTA Alpha Curves
+
+**Kalman + YOLOv8n**
+
+![KF HOTA curve](KALMAN-YOLO/yolokfoutputs/track_results/pedestrian_plot.png)
+
+**DiffMOT (D²MP)**
+
+![DiffMOT HOTA curve](DiffMOT-main/outputs/mot17/diffmot/pedestrian_plot.png)
+
+**BoTSORT + FastReID SBS-S50**
+
+![BoTSORT HOTA curve](BOTSORT-FASTREID/BOTSORT-OUTPUT/track_results/pedestrian_plot.png)
+
+---
+
 ## Output File Locations
 
 ### KALMAN-YOLO
