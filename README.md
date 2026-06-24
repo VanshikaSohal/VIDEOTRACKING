@@ -8,7 +8,7 @@ A comparative study of **classical**, **diffusion-based**, and **appearance-base
 
 | | KALMAN-YOLO | DiffMOT-main | BoTSORT + FastReID |
 |---|---|---|---|
-| **Detection** | YOLOv8 | YOLOv8 | YOLOv8n |
+| **Detection** | YOLOv8n | YOLOv8n | YOLOv8n |
 | **Tracking** | Kalman Filter | Diffusion Model (D²MP) | BoTSORT with FastReID SBS-S50 ReID (ResNeSt50) |
 | **Dataset** | MOT17 (7 sequences) | MOT17 (7 sequences) | MOT17 (7 sequences) |
 | **Evaluation** | TrackEval (HOTA, CLEAR, Identity) | TrackEval (HOTA, CLEAR, Identity) | TrackEval (HOTA, CLEAR, Identity) |
