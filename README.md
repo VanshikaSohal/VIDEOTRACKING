@@ -22,15 +22,11 @@ Only files tracked in Git are shown below. Datasets (images, gt), model weights,
 ```
 VIDEOTRACKING/
 ├── README.md
-├── RESULTS.md
-├── PROJECT_STRUCTURE.md
-├── TRACKING_RESULTS_LOCATIONS.md
 │
 ├── BOTSORT-FASTREID/                   # BoTSORT + FastReID SBS-S50 pipeline
 │   ├── botsort_mot.py                  # Main tracking script
 │   ├── eval_only.py                    # TrackEval evaluation helper
-│   ├── TRACKING.txt                    # Run notes
-│   └── BOTSORT-OUTPUT/                 # Tracking outputs (tracked in Git)
+│   └── BOTSORT-OUTPUT/                 # Tracking outputs 
 │       └── track_results/
 │           ├── MOT17-02-FRCNN.txt
 │           ├── MOT17-04-FRCNN.txt
@@ -39,6 +35,8 @@ VIDEOTRACKING/
 │           ├── MOT17-10-FRCNN.txt
 │           ├── MOT17-11-FRCNN.txt
 │           └── MOT17-13-FRCNN.txt
+│       └── pedestrian_plot.pdf
+│       └── pedestrian_plot.png
 │   # NOTE: BoT-SORT/ and TrackEval/ are cloned libraries — git-ignored
 │   # Eval summary: BOTSORT-FASTREID/TrackEval/data/trackers/mot_challenge/
 │   #               MOT17-train/BOTSORT_FASTREID/pedestrian_summary.txt
@@ -71,8 +69,6 @@ VIDEOTRACKING/
     ├── main.py
     ├── diffmot.py
     ├── mot_data_process.py
-    ├── dancetrack_data_process.py
-    ├── sports_data_process.py
     ├── convert_mot17_to_framewise.py
     ├── createdetfor4.py
     ├── CODEFILE.ipynb
@@ -83,47 +79,9 @@ VIDEOTRACKING/
     ├── configs/
     │   ├── mot.yaml
     │   ├── mot17_test.yaml
-    │   ├── mot20_test.yaml
-    │   ├── dancetrack.yaml
-    │   ├── dancetrack_test.yaml
-    │   ├── sportsmot.yaml
-    │   └── sportsmot_test.yaml
-    ├── models/
-    │   ├── autoencoder.py
-    │   ├── common.py
-    │   ├── condition_embedding.py
-    │   ├── denoising_diffusion_pytorch.py
-    │   └── diffusion.py
-    ├── tracker/
-    │   ├── DiffMOTtracker.py
-    │   ├── matching.py
-    │   ├── basetrack.py
-    │   ├── cmc.py
-    │   ├── gmc.py
-    │   ├── embedding.py
-    │   └── ocsort_tracker/
-    │       ├── association.py
-    │       ├── kalmanfilter.py
-    │       └── ocsort.py
-    ├── tracking_utils/
-    │   ├── evaluation.py
-    │   ├── io.py
-    │   ├── kalman_filter.py
-    │   ├── NSA_kalman_filter.py
-    │   ├── log.py
-    │   ├── nms.py
-    │   ├── parse_config.py
-    │   ├── timer.py
-    │   ├── utils.py
-    │   └── visualization.py
     ├── dataset/
     │   ├── __init__.py
     │   └── dataset.py
-    ├── external/
-    │   └── adaptors/
-    │       ├── __init__.py
-    │       └── fastreid_adaptor.py
-    │   # external/fastreid/ is a cloned library — git-ignored
     ├── datasets/                        # Partial dataset (only det.txt tracked)
     │   └── MOT17/train/MOT17-XX-FRCNN/
     │       └── det/
